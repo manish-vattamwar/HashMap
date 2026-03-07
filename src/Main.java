@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 class HashMap <T> {
@@ -80,6 +82,32 @@ class HashMap <T> {
         }
         return false;
     }
+    public HashSet<String> keySet(){
+        HashSet<String> set = new HashSet<>();
+        for(Node temp : array){
+            if(temp != null){
+                Node current = temp;
+                while(current != null){
+                    set.add(current.key);
+                    current = current.next;
+                }
+            }
+        }
+        return set;
+    }
+    public ArrayList<T> values(){
+        ArrayList<T> list = new ArrayList<>();
+        for(Node temp : array){
+            if(temp != null){
+                Node current = temp;
+                while(current != null){
+                    list.add((T) current.value);
+                    current = current.next;
+                }
+            }
+        }
+        return list;
+    }
 }
 class Node <T>{
     String key;
@@ -92,11 +120,16 @@ class Node <T>{
 }
 public class Main{
     public static void main(String[] args) {
-        HashMap<String> map = new HashMap<>();map.put("name", "Manish");
+        HashMap<String> map = new HashMap<>();
+        map.put("name", "Manish");
+        map.put("mane","charish");
+        map.put("ityc","hi");
         map.put("age", "18");
         map.put("city", "Hyderabad");
         map.remove("age");
         System.out.println((String) map.get("age"));
         System.out.println((String) map.get("name"));
+        System.out.println(map.keySet());
+        System.out.println(map.values());
     }
 }
