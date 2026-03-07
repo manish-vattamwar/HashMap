@@ -69,6 +69,17 @@ class HashMap <T> {
             current = current.next;
         }
     }
+    public boolean contains(String key){
+        int hash = HashFunction(key);
+        Node current = array[hash];
+        while(current != null){
+            if(current.key.equals(key)){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
 }
 class Node <T>{
     String key;
