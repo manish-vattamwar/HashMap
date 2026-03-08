@@ -108,6 +108,19 @@ class HashMap <T> {
         }
         return list;
     }
+    public <T> T getOrDefault(String key,T defaultvalue){
+        int hash = HashFunction(key);
+        if(contains(key)){
+            Node current = array[hash];
+            while(current != null){
+                if(current.key.equals(key)){
+                    return (T) current.value;
+                }
+                current = current.next;
+            }
+        }
+        return defaultvalue;
+    }
 }
 class Node <T>{
     String key;
@@ -131,5 +144,7 @@ public class Main{
         System.out.println((String) map.get("name"));
         System.out.println(map.keySet());
         System.out.println(map.values());
+        String val = map.getOrDefault("mnea","0");
+        System.out.println(val);
     }
 }
